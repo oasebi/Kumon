@@ -1,0 +1,44 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class KuisMatematika {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+
+        // Jumlah soal kuis
+        int jumlahSoal = 10;
+        
+        // Array untuk menyimpan soal (pasangan angka untuk penjumlahan)
+        int[] num1Array = new int[jumlahSoal];
+        int[] num2Array = new int[jumlahSoal];
+        int[] correctAnswers = new int[jumlahSoal];
+        
+        // Mengisi array dengan soal dan jawaban yang benar
+        for (int i = 0; i < jumlahSoal; i++) {
+            num1Array[i] = random.nextInt(100);
+            num2Array[i] = random.nextInt(100);
+            correctAnswers[i] = num1Array[i] + num2Array[i];
+        }
+
+        int score = 0; // Menyimpan skor pemain
+
+        // Menampilkan soal dan meminta jawaban
+        for (int i = 0; i < jumlahSoal; i++) {
+            System.out.println("Soal " + (i + 1) + ": Berapa " + num1Array[i] + " + " + num2Array[i] + "?");
+            int userAnswer = scanner.nextInt();
+
+            // Mengecek apakah jawaban benar
+            if (userAnswer == correctAnswers[i]) {
+                System.out.println("Jawaban Anda benar!");
+                score++; // Tambah skor jika jawaban benar
+            } else {
+                System.out.println("Jawaban Anda salah. Jawaban yang benar adalah: " + correctAnswers[i]);
+            }
+        }
+
+        // Menampilkan hasil akhir
+        System.out.println("\nSkor Anda: " + score + " dari " + jumlahSoal);
+        scanner.close();
+    }
+}
